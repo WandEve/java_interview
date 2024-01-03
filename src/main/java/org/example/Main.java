@@ -24,6 +24,7 @@ public class Main {
         return result;
     }
 
+    //变态跳台阶
     public static int jumpFloorII(int target){
         int[] dp = new int[target];
         Arrays.fill(dp,1);
@@ -37,4 +38,22 @@ public class Main {
     public static int JumpFloorII(int target) {
         return (int) Math.pow(2, target - 1);
     }
+
+    //旋转数组的最小值
+    public static int minNumberInRotateArrey(int [] nums){
+        if(nums.length == 0)
+            return 0;
+        int l = 0, h = nums.length-1;
+        while (l<h){
+            int m = l + (h + l) / 2;
+            if(nums[m] <= nums[h])
+                h = m;
+            else
+                l = m + 1;
+        }
+        return nums[l];
+    }
+
+
+
 }
