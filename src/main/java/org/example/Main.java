@@ -2,14 +2,56 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("Hello world!");
 
-    }
-    //两个栈实现队列
 
+    }
+
+    //包含min函数的栈
+    private Stack<Integer> dataStack = new Stack<>();
+    private Stack<Integer> minStack = new Stack<>();
+
+    public void push(int node){
+        dataStack.push(node);
+        minStack.push(minStack.isEmpty() ? node : Math.min(minStack.peek(),node));
+    }
+
+    public void pop(){
+        dataStack.pop();
+        minStack.pop();
+    }
+
+    public int top(){
+        return dataStack.peek();
+    }
+
+    public int min(){
+        return minStack.peek();
+    }
+
+
+    //两个栈实现队列
+//    static Stack<Integer> in = new Stack<Integer>();
+//    static Stack<Integer> out = new Stack<Integer>();
+//    public static void push(int node){
+//        in.push(node);
+//    }
+//    public static int pop() throws Exception{
+//        if(out.isEmpty()){
+//            while (!in.isEmpty()){
+//                out.push(in.pop());
+//            }
+//        }
+//        if(out.isEmpty()){
+//            throw new Exception("queue is empty");
+//        }
+//
+//        return out.pop();
+//    }
 
     //第一个只出现一次的字符位置
     public static void FirstNotRepeatingChar(){
